@@ -9,32 +9,172 @@ using Entidades;
 using SistemaDeVentas.Entidades;
 using System.Windows.Forms;
 using System.Data.Entity;
+using SistemaDeVentas.BLL;
 
 namespace BLL
 {
     public class ArticuloBLL
     {
         Articulos articulos= new Articulos();
-
-        public static bool Insertar(Articulos a)
+        public static bool Insertar(Articulos articulo)
         {
-            bool re = false;
-            try
+            bool retorna = false;
+            using (var db = new SistemaVentasDb())
             {
-                SistemaVentasDb db = new SistemaVentasDb();
+                try
+                {
+                    if (Buscar(articulo.ArticuloId) == null)
+                    {
+                        db.Articulos.Add(articulo);
+                    }
+                    else
+                        db.Entry(articulo).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                db.Articulos.Add(a);
-                db.SaveChanges();
-                db.Dispose();
-                re = true;
+                    retorna = true;
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
+                return retorna;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return re;
+
         }
-    
+        public static void Eliminar(Articulos articulo)
+        {
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+
+                    if (articulo != null)
+                    {
+                        db.Entry(articulo).State = EntityState.Deleted;
+
+                        db.SaveChanges();
+
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
+            }
+        }
+        public static Articulos Buscar(int id)
+        {
+            var articulo = new Articulos();
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    articulo = db.Articulos.Find(id);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return articulo;
+        }
+        public static List<Articulos> GetLista()
+        {
+            List<Articulos> lista = new List<Articulos>();
+
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    lista = db.Articulos.ToList();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
+                return lista;
+            }
+        }
+
+        public static List<Articulos> GetLista(int id)
+        {
+            List<Articulos> lista = new List<Articulos>();
+
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    lista = db.Articulos.Where(p => p.ArticuloId == id).ToList();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            return lista;
+        }
+        public static double GetPrecio(int id)
+        {
+            double precio = 0;
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    Articulos a = db.Articulos.Where(art => art.ArticuloId == id).FirstOrDefault();
+                    precio = a.Precio;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
+                return precio;
+            }
+        }
+        public static List<Articulos> ListaCombo()
+        {
+            List<Articulos> lista = null;
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    lista = db.Articulos.Where(p => p.Cantidad <= 0 && p.Importe <= 0).ToList();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return lista;
+        }
+        public static List<Articulos> Articulo(int ventaid)
+        {
+            var articulo = new List<Articulos>();
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    var venta = VentasBLL.Buscar(ventaid);
+                    if (venta != null)
+                        articulo= venta.Articulos;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+            return articulo;
+        }
+
         public static bool  Modificar(int id, Articulos art)
         {
             bool retorno = false;
@@ -62,91 +202,7 @@ namespace BLL
             return retorno;
         }
 
-        public static Articulos Buscar(int id)
-        {
-            var db = new SistemaVentasDb();
-
-            return db.Articulos.Find(id);
-
-        }
-        public static Articulos BuscarNombre(string nombre)
-        {
-            var db = new SistemaVentasDb();
-
-            return db.Articulos.Find(nombre);
-
-        }
-        public static Articulos BuscarCodigo(int id)
-        {
-            var db = new SistemaVentasDb();
-
-            return db.Articulos.Find(id);
-
-        }
-
         
-
-
-
-
-        public static bool Eliminar(int id)
-        {
-            //bool retorna = false;
-            try
-            {
-
-                using (var db = new SistemaVentasDb())
-                {
-                    Articulos a = new Articulos();
-                    a = db.Articulos.Find(id);
-
-                    db.Articulos.Remove(a);
-                    db.SaveChanges();
-                    //db.Dispose();
-                    return false;
-                }
-
-
-            }
-            catch (Exception)
-            {
-                return true;
-                throw;
-
-
-            }
-
-        }
-
-    
-
-
-        public static List<Articulos> GetLista()
-        {
-            List<Articulos> lista = new List<Articulos>();
-
-            var db = new SistemaVentasDb();
-
-            lista = db.Articulos.ToList();
-
-            return lista;
-
-
-        }
-
-       
-
-        public static List<Articulos> GetLista(int articuloId)
-        {
-            List<Articulos> lista = new List<Articulos>();
-
-            var db = new SistemaVentasDb();
-
-            lista = db.Articulos.Where(p => p.ArticuloId == articuloId).ToList();
-
-            return lista;
-
-        }
 
 
 

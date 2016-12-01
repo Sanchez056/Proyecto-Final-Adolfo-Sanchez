@@ -13,165 +13,98 @@ namespace SistemaDeVentas.BLL
 {
    public  class VentasBLL
     {
-       
-            Ventas  ventas = new Ventas();
 
-        public static bool Insertar(Ventas v)
+        public static bool Insertar(Ventas venta)
         {
-            bool re = false;
-            try
+            bool retorna = false;
+            using (var db = new SistemaVentasDb())
             {
-                var db = new SistemaVentasDb();
-
-                db.Ventas.Add(v);
-                var gp = db.Ventas.Add(v);
-                foreach (var art in v.Articulos)
-                {
-                    db.Entry(art).State = EntityState.Unchanged;
-                }
-                db.SaveChanges();
-                db.Dispose();
-                re = true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return re;
-        }
-
-    
-
-    
-        public static bool Modificar(int id, Ventas vent)
-        {
-            bool retorno = false;
-            try
-            {
-                using (var db = new SistemaVentasDb())
-                {
-                    Ventas v = db.Ventas.Find(id);
-                    
-                    v.Deuda = vent.Deuda;
-                    v.Cantidad = vent.Cantidad;
-                    v.Itebis = vent.Itebis;
-                    v.Precio = vent.Precio;
-                   
-                    v.CodicionPago = vent.CodicionPago;
-                    v.descuento = vent.descuento;
-               
-
-                    db.SaveChanges();
-                }
-                retorno = true;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return retorno;
-        }
-
-        public static Ventas Buscar(int id)
-            {
-                var db = new SistemaVentasDb();
-
-                return db.Ventas.Find(id);
-
-
-            }
-
-
-
-            public static bool Eliminar(int id)
-            {
-                //bool retorna = false;
                 try
                 {
+                    db.Ventas.Add(venta);
+                    db.SaveChanges();
+                    retorna = true;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
+                return retorna;
+            }
+        }
 
-                    using (var db = new SistemaVentasDb())
-                    {
-                    Ventas v = new Ventas();
-                       v = db.Ventas.Find(id);
-
-                        db.Ventas.Remove(v);
-                        db.SaveChanges();
-                        //db.Dispose();
-                        return false;
-                    }
-
-
+        public static Ventas Buscar(int ventaId)
+        {
+            Ventas venta = null;
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+                    venta = db.Ventas.Find(ventaId);
+                    if (venta != null)
+                        venta.Articulos.Count();
                 }
                 catch (Exception)
                 {
-                    return true;
-                    throw;
 
+                    throw;
+                }
+            }
+            return venta;
+        }
+        public static void Eliminar(Ventas venta)
+        {
+            using (var db = new SistemaVentasDb())
+            {
+                try
+                {
+
+                    if (venta != null)
+                    {
+                        db.Entry(venta).State = EntityState.Deleted;
+
+                        db.SaveChanges();
+
+                    }
 
                 }
-
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    throw;
+                }
             }
 
+        }
 
 
 
-            public static List<Ventas> GetLista()
-            {
-                List<Ventas> lista = new List<Ventas>();
-
-                var db = new SistemaVentasDb();
-
-                lista = db.Ventas.ToList();
-
-                return lista;
-
-
-            }
-
-            
-
-            public static List<Ventas> GetLista(int id)
-            {
-                List<Ventas> lista = new List<Ventas>();
-
-                var db = new SistemaVentasDb();
-
-                lista = db.Ventas.Where(p => p.VentaId== id).ToList();
-
-                return lista;
-
-            }
 
 
 
-          
-           
+        //public static List<Ventas> GetListaFecha(DateTime aux)
+        //    {
+        //        List<Ventas> lista = new List<Ventas>();
 
-           
+        //        var db = new SistemaVentasDb();
 
+        //        lista = db.Ventas.Where(p => p.Fecha == aux).ToList();
 
-            public static List<Ventas> GetListaFecha(DateTime aux)
-            {
-                List<Ventas> lista = new List<Ventas>();
+        //        return lista;
 
-                var db = new SistemaVentasDb();
+        //    }
+        //    public static List<Ventas> GetListaFecha(DateTime Desde, DateTime Hasta)
+        //    {
+        //        List<Ventas> lista = new List<Ventas>();
 
-                lista = db.Ventas.Where(p => p.Fecha == aux).ToList();
+        //        var db = new SistemaVentasDb();
 
-                return lista;
+        //        lista = db.Ventas.Where(p => p.Fecha >= Desde && p.Fecha <= Hasta).ToList();
 
-            }
-            public static List<Ventas> GetListaFecha(DateTime Desde, DateTime Hasta)
-            {
-                List<Ventas> lista = new List<Ventas>();
+        //        return lista;
 
-                var db = new SistemaVentasDb();
-
-                lista = db.Ventas.Where(p => p.Fecha >= Desde && p.Fecha <= Hasta).ToList();
-
-                return lista;
-
-            }
+        //    }
 
         }
     }

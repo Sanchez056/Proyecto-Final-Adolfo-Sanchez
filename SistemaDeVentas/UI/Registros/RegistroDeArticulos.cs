@@ -43,7 +43,7 @@ namespace SistemaDeVentas.UI.Registros
         private void LLenar(Entidades.Articulos articulo)
         {
 
-
+            var art = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdtextBox.Text));
             ArticuloIdtextBox.Text = articulo.ArticuloId.ToString();
             NombreArticulotextBox.Text = articulo.Nombre;
             DespcripciontextBox.Text = articulo.Descripcion;
@@ -255,7 +255,7 @@ namespace SistemaDeVentas.UI.Registros
         {
             if (validarId("Favor digitar el id del Articulo que desea eliminar") && ValidarBuscar())
             {
-                ArticuloBLL.Eliminar(ut.StringInt(ArticuloIdtextBox.Text));
+                ArticuloBLL.Eliminar(ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdtextBox.Text)));
                 Limpiar();
                 MessageBox.Show("ELiminado con exito");
             }

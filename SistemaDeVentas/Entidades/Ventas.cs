@@ -25,7 +25,7 @@ namespace SistemaDeVentas.Entidades
 
          public double Deuda { get; set; }
 
-      //  public DateTime FechaVencimiento { get; set; }
+         public string FechaVencimiento { get; set; }
 
         public int Cantidad { get; set; }
 
@@ -42,7 +42,7 @@ namespace SistemaDeVentas.Entidades
 
 
 
-        public DateTime Fecha { get; set; }
+        //public DateTime Fecha { get; set; }
 
         public virtual List<Articulos> Articulos { get; set; }
 

@@ -34,7 +34,6 @@
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.Totallabel = new System.Windows.Forms.Label();
             this.ItebisTotaltextBox = new System.Windows.Forms.TextBox();
-            this.FechaVencimientodateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EstebisTotallabel = new System.Windows.Forms.Label();
             this.FechaVeclabel = new System.Windows.Forms.Label();
             this.ArticulodataGridView = new System.Windows.Forms.DataGridView();
@@ -90,7 +89,6 @@
             this.tabPage2.Controls.Add(this.TotaltextBox);
             this.tabPage2.Controls.Add(this.Totallabel);
             this.tabPage2.Controls.Add(this.ItebisTotaltextBox);
-            this.tabPage2.Controls.Add(this.FechaVencimientodateTimePicker);
             this.tabPage2.Controls.Add(this.EstebisTotallabel);
             this.tabPage2.Controls.Add(this.FechaVeclabel);
             this.tabPage2.Controls.Add(this.ArticulodataGridView);
@@ -141,14 +139,6 @@
             this.ItebisTotaltextBox.Size = new System.Drawing.Size(105, 21);
             this.ItebisTotaltextBox.TabIndex = 98;
             this.ItebisTotaltextBox.TextChanged += new System.EventHandler(this.ItebisTotaltextBox_TextChanged);
-            // 
-            // FechaVencimientodateTimePicker
-            // 
-            this.FechaVencimientodateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaVencimientodateTimePicker.Location = new System.Drawing.Point(790, 74);
-            this.FechaVencimientodateTimePicker.Name = "FechaVencimientodateTimePicker";
-            this.FechaVencimientodateTimePicker.Size = new System.Drawing.Size(92, 21);
-            this.FechaVencimientodateTimePicker.TabIndex = 108;
             // 
             // EstebisTotallabel
             // 
@@ -543,7 +533,6 @@
         private System.Windows.Forms.DataGridView ArticulodataGridView;
         private System.Windows.Forms.ComboBox ArticulocomboBox;
         private System.Windows.Forms.Button Editarbutton;
-        private System.Windows.Forms.DateTimePicker FechaVencimientodateTimePicker;
         private System.Windows.Forms.Label FechaVeclabel;
         private System.Windows.Forms.TextBox CantidadArticulotextBox;
         private System.Windows.Forms.Label Cantidadlabel;

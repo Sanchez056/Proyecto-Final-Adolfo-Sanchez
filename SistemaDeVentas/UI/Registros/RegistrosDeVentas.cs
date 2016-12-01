@@ -22,13 +22,14 @@ namespace SistemaDeVentas.UI.Registros
         public List<Articulos> lista = new List<Articulos>();
         public List<Clientes> listac = new List<Clientes>();
         public List<CondicionPagos> listacd = new List<CondicionPagos>();
-        Ventas venta = new Ventas();
+        Ventas venta;
         Clientes cliente = new Clientes();
         UtilidadesInt utint = new UtilidadesInt();
         UtilidadesDouble utDouble = new UtilidadesDouble();
         public RegistrosDeVentas()
         {
             InitializeComponent();
+            venta = new Ventas();
         }
 
       
@@ -60,7 +61,7 @@ namespace SistemaDeVentas.UI.Registros
             ItebisTotaltextBox.Clear();
             ArticulodataGridView.DataSource = null;
             ArticulodataGridView.Rows.Clear();
-            //FechadateTimePicker.Value = f.Value;
+            FechadateTimePicker.Value = f.Value;
             LimpiarErroresProvider();
 
             //-----
@@ -79,15 +80,37 @@ namespace SistemaDeVentas.UI.Registros
                 LLenar(BLL.VentasBLL.Buscar(ut.StringInt(FacturaIdtextBox.Text)));
              
         }
+        private void Cobrarbutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //LlenarClase(venta);
+                if (ValidarTextbox())
+                {
+
+                    VentasBLL.Insertar(venta);
+                    Limpiar();
+                    LimpiarErroresProvider();
+                    MessageBox.Show("Guardado con exito");
+                }
+
+            }
+            catch (Exception es)
+            {
+                MessageBox.Show(es.ToString());
+
+
+            }
+        }
 
         private void LLenar(Ventas v)
         {
            
-            var vent = BLL.VentasBLL.Buscar(ut.StringInt(FacturaIdtextBox.Text));
+            var venta = BLL.VentasBLL.Buscar(ut.StringInt(FacturaIdtextBox.Text));
             FacturaIdtextBox.Text = v.VentaId.ToString();
-            
-            ArticulodataGridView.DataSource = venta.Cantidad;
-            ArticulodataGridView.DataSource = v.Articulos;
+
+            ArticulodataGridView.DataSource = null;
+            ArticulodataGridView.DataSource = venta.Articulos;
             CantidadArticulotextBox.Text = v.Cantidad.ToString();
             CondicioncomboBox.Text = v.CodicionPago;
             EmpleadocomboBox.Text = v.Empleado;
@@ -111,7 +134,7 @@ namespace SistemaDeVentas.UI.Registros
            
 
 
-                ArticulocomboBox.DataSource = lista;
+                ArticulocomboBox.DataSource = ArticuloBLL.GetLista();
                 ArticulocomboBox.ValueMember = "ArticuloId";
                 ArticulocomboBox.DisplayMember = "Nombre";
             
@@ -120,7 +143,7 @@ namespace SistemaDeVentas.UI.Registros
         {
           
 
-                CondicioncomboBox.DataSource = listacd;
+                CondicioncomboBox.DataSource = CondicionPagosBLL.GetLista();
                 CondicioncomboBox.ValueMember = "CondicionId";
                 CondicioncomboBox.DisplayMember = "Descripcion";
             
@@ -129,7 +152,7 @@ namespace SistemaDeVentas.UI.Registros
         private void CargarComboxEmpleados()
         {
 
-                EmpleadocomboBox.DataSource = list;
+                EmpleadocomboBox.DataSource = EmpleadosBLL.GetLista();
                 EmpleadocomboBox.ValueMember = "EmpleadoId";
                 EmpleadocomboBox.DisplayMember = "Nombre";
             
@@ -141,7 +164,7 @@ namespace SistemaDeVentas.UI.Registros
         {
             
 
-                ClientecomboBox.DataSource = listac;
+                ClientecomboBox.DataSource = ClientesBLL.GetLista();
                 ClientecomboBox.ValueMember = "ClienteId";
                 ClientecomboBox.DisplayMember = "Nombre";
             
@@ -185,27 +208,7 @@ namespace SistemaDeVentas.UI.Registros
 
         }
 
-        private void Cobrarbutton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                LlenarClase(venta);
-                if (ValidarTextbox())
-                {
-
-                    BLL.VentasBLL.Insertar(venta);
-                    Limpiar();
-                    LimpiarErroresProvider();
-                    MessageBox.Show("Guardado con exito");
-                }
-
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.ToString());
-
-
-            }
+       
         
            
             
@@ -221,13 +224,14 @@ namespace SistemaDeVentas.UI.Registros
                 
 
 
-        }
+        
         private void LlenarClase(Ventas v)
         {
 
             // v.Deuda = utDouble.StringDouble(MontoDeudatextBox.Text);
             v.CodicionPago = CondicioncomboBox.Text;
-            v.Fecha = FechadateTimePicker.Value;
+            //v.FechaVencimiento = FechaVencimientodateTimePicker.Value;
+           // v.Fecha = FechadateTimePicker.Value;
             v.Cantidad = v.Articulos.Count();
             v.Cliente = ClientecomboBox.Text;
             v.Empleado = EmpleadocomboBox.Text;
@@ -298,7 +302,7 @@ namespace SistemaDeVentas.UI.Registros
         {
             if (validarId("Favor digitar el id de la Venta  que desea eliminar") && ValidarBuscar())
             {
-                BLL.VentasBLL.Eliminar(ut.StringInt(FacturaIdtextBox.Text));
+                VentasBLL.Eliminar(VentasBLL.Buscar(ut.StringInt(FacturaIdtextBox.Text)));
                 Limpiar();
                 MessageBox.Show("ELiminado con exito");
             }
@@ -397,7 +401,6 @@ namespace SistemaDeVentas.UI.Registros
 
                 LlenarClase(venta);
                 
-                    BLL.VentasBLL.Modificar(ut.StringInt(FacturaIdtextBox.Text), venta);
                     Limpiar();
                     LimpiarErroresProvider();
                     MessageBox.Show("Actualizado con exito");
