@@ -85,7 +85,7 @@ namespace ProyectoFinal_Aplicada1.Registros
             if (factura != null)
             {
                 SubTotaltextBox.Text = factura.SubTotal.ToString();
-                SubTotaltextBox.Text = factura.TotalItebis.ToString();
+                TotalItebistextBox.Text = factura.TotalItebis.ToString();
                 TotaltextBox.Text = factura.Total.ToString();
                 ArticulodataGridView.DataSource = null;
                 ArticulodataGridView.DataSource = factura.Articulos;

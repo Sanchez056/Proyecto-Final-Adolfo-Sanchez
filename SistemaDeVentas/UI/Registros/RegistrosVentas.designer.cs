@@ -170,6 +170,8 @@
             // 
             this.ArticulodataGridView.Location = new System.Drawing.Point(6, 209);
             this.ArticulodataGridView.Name = "ArticulodataGridView";
+            this.ArticulodataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.ArticulodataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Navy;
             this.ArticulodataGridView.Size = new System.Drawing.Size(876, 150);
             this.ArticulodataGridView.TabIndex = 109;
             // 
