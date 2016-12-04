@@ -14,7 +14,7 @@ namespace DAL
     {
 
 
-        public SistemaVentasDb() : base("name=ConStr")
+        public SistemaVentasDb() : base("name=ConStrs")
         {
 
         }

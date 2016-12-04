@@ -47,8 +47,7 @@ namespace SistemaDeVentas.UI.Registros
             ArticuloIdtextBox.Text = articulo.ArticuloId.ToString();
             NombreArticulotextBox.Text = articulo.Nombre;
             DespcripciontextBox.Text = articulo.Descripcion;
-            CantidadtextBox.Text = articulo.CantidadDispodible.ToString();
-            PrecioCompratextBox.Text = articulo.PrecioCompra.ToString();
+            CantidadtextBox.Text = articulo.Cantidad.ToString();
             PrecioVentatextBox.Text = articulo.Precio.ToString();
             MarcaArticulotextBox.Text = articulo.Marca;
 
@@ -150,15 +149,10 @@ namespace SistemaDeVentas.UI.Registros
             Proveedores p = new Proveedores();
             Categorias c = new Categorias();
             a.Nombre = NombreArticulotextBox.Text;
-            a.CantidadDispodible = ut.StringInt(CantidadtextBox.Text);
+            a.Cantidad = ut.StringInt(CantidadtextBox.Text);
             a.Descripcion = DespcripciontextBox.Text; ;
             a.Marca = MarcaArticulotextBox.Text;
-            a.PrecioCompra = StringDouble(PrecioCompratextBox.Text);
             a.Precio = StringDouble(PrecioVentatextBox.Text);
-            a.Descuento = ut.StringInt(DescuentotextBox.Text);
-            p.NombreProveedor = a.NombreProveedor = NombreProveedorcomboBox1.Text;
-            a.Categoria = c.Descripcion = CategoriacomboBox.Text;
-            a.Fecha = FechadateTimePicker.Value;
          
         }
 
@@ -255,7 +249,7 @@ namespace SistemaDeVentas.UI.Registros
         {
             if (validarId("Favor digitar el id del Articulo que desea eliminar") && ValidarBuscar())
             {
-                ArticuloBLL.Eliminar(ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdtextBox.Text)));
+                //ArticuloBLL.Eliminar(ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdtextBox.Text)));
                 Limpiar();
                 MessageBox.Show("ELiminado con exito");
             }

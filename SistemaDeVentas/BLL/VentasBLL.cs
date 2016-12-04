@@ -13,37 +13,36 @@ namespace SistemaDeVentas.BLL
 {
    public  class VentasBLL
     {
-
-        public static bool Insertar(Ventas venta)
+        public static bool Insertar(Ventas factura)
         {
-            bool retorna = false;
-            using (var db = new SistemaVentasDb())
+            bool resultado = false;
+            using (var conexion = new SistemaVentasDb())
             {
                 try
                 {
-                    db.Ventas.Add(venta);
-                    db.SaveChanges();
-                    retorna = true;
+                    conexion.Ventas.Add(factura);
+                    conexion.SaveChanges();
+                    resultado = true;
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.ToString());
                     throw;
                 }
-                return retorna;
+                return resultado;
             }
         }
 
-        public static Ventas Buscar(int ventaId)
+        public static Ventas Buscar(int facturaId)
         {
-            Ventas venta = null;
-            using (var db = new SistemaVentasDb())
+            Ventas factura = null;
+            using (var conexion = new SistemaVentasDb())
             {
                 try
                 {
-                    venta = db.Ventas.Find(ventaId);
-                    if (venta != null)
-                        venta.Articulos.Count();
+                    factura = conexion.Ventas.Find(facturaId);
+                    if (factura != null)
+                        factura.Articulos.Count();
                 }
                 catch (Exception)
                 {
@@ -51,20 +50,20 @@ namespace SistemaDeVentas.BLL
                     throw;
                 }
             }
-            return venta;
+            return factura;
         }
-        public static void Eliminar(Ventas venta)
+        public static void Eliminar(Ventas factura)
         {
-            using (var db = new SistemaVentasDb())
+            using (var conexion = new SistemaVentasDb())
             {
                 try
                 {
 
-                    if (venta != null)
+                    if (factura != null)
                     {
-                        db.Entry(venta).State = EntityState.Deleted;
+                        conexion.Entry(factura).State = EntityState.Deleted;
 
-                        db.SaveChanges();
+                        conexion.SaveChanges();
 
                     }
 
@@ -81,31 +80,6 @@ namespace SistemaDeVentas.BLL
 
 
 
-
-
-        //public static List<Ventas> GetListaFecha(DateTime aux)
-        //    {
-        //        List<Ventas> lista = new List<Ventas>();
-
-        //        var db = new SistemaVentasDb();
-
-        //        lista = db.Ventas.Where(p => p.Fecha == aux).ToList();
-
-        //        return lista;
-
-        //    }
-        //    public static List<Ventas> GetListaFecha(DateTime Desde, DateTime Hasta)
-        //    {
-        //        List<Ventas> lista = new List<Ventas>();
-
-        //        var db = new SistemaVentasDb();
-
-        //        lista = db.Ventas.Where(p => p.Fecha >= Desde && p.Fecha <= Hasta).ToList();
-
-        //        return lista;
-
-        //    }
-
-        }
     }
+}
 

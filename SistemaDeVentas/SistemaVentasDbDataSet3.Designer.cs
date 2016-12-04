@@ -7541,7 +7541,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7844,7 +7844,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8089,7 +8089,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8377,7 +8377,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8649,7 +8649,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8881,7 +8881,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9119,7 +9119,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9373,7 +9373,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9665,7 +9665,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9931,7 +9931,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10165,7 +10165,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10434,7 +10434,7 @@ namespace SistemaDeVentas.SistemaVentasDbDataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStr;
+            this._connection.ConnectionString = global::SistemaDeVentas.Properties.Settings.Default.ConStrs;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

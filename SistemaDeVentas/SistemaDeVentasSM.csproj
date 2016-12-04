@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>C:\Users\adolfo\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -310,17 +310,15 @@
     </Compile>
     <Compile Include="UI\Registros\RegistrosDeEmpleado.cs">
       <SubType>Form</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="UI\Registros\RegistrosDeEmpleado.Designer.cs">
       <DependentUpon>RegistrosDeEmpleado.cs</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="UI\Registros\RegistrosDeVentas.cs">
+    <Compile Include="UI\Registros\RegistrosVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Registros\RegistrosDeVentas.Designer.cs">
-      <DependentUpon>RegistrosDeVentas.cs</DependentUpon>
+    <Compile Include="UI\Registros\RegistrosVentas.designer.cs">
+      <DependentUpon>RegistrosVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Registros\RegistroTipoUsuarios.cs">
       <SubType>Form</SubType>
@@ -426,10 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\RegistrosDeEmpleado.resx">
       <DependentUpon>RegistrosDeEmpleado.cs</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Registros\RegistrosDeVentas.resx">
-      <DependentUpon>RegistrosDeVentas.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Registros\RegistrosVentas.resx">
+      <DependentUpon>RegistrosVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\RegistroTipoUsuarios.resx">
       <DependentUpon>RegistroTipoUsuarios.cs</DependentUpon>
@@ -497,10 +494,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BaseDatos\SistemaVentasDb.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="BaseDatos\SistemaVentasDb_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>SistemaVentasDb.mdf</DependentUpon>
     </Content>
     <None Include="Resources\user2.ico" />
@@ -581,7 +578,9 @@
     <None Include="Resources\next-.ico" />
     <None Include="Resources\logout-28550.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SistemaDeVentas\UI\" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

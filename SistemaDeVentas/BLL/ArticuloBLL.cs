@@ -15,10 +15,9 @@ namespace BLL
 {
     public class ArticuloBLL
     {
-        Articulos articulos= new Articulos();
         public static bool Insertar(Articulos articulo)
         {
-            bool retorna = false;
+            bool obtener = false;
             using (var db = new SistemaVentasDb())
             {
                 try
@@ -31,14 +30,15 @@ namespace BLL
                         db.Entry(articulo).State = EntityState.Modified;
                     db.SaveChanges();
 
-                    retorna = true;
+                    obtener = true;
 
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.ToString());
+                    //throw;
                 }
-                return retorna;
+                return obtener;
             }
 
         }
@@ -120,15 +120,15 @@ namespace BLL
 
             return lista;
         }
-        public static double GetPrecio(int id)
+        public static Double GetPrecio(int id)
         {
-            double precio = 0;
+            Double precio = 0;
             using (var db = new SistemaVentasDb())
             {
                 try
                 {
-                    Articulos a = db.Articulos.Where(art => art.ArticuloId == id).FirstOrDefault();
-                    precio = a.Precio;
+                    Articulos p = db.Articulos.Where(art => art.ArticuloId == id).FirstOrDefault();
+                    precio = p.Precio;
                 }
                 catch (Exception e)
                 {
@@ -155,16 +155,16 @@ namespace BLL
             }
             return lista;
         }
-        public static List<Articulos> Articulo(int ventaid)
+        public static List<Articulos> Articulo(int id)
         {
             var articulo = new List<Articulos>();
             using (var db = new SistemaVentasDb())
             {
                 try
                 {
-                    var venta = VentasBLL.Buscar(ventaid);
+                    var venta = VentasBLL.Buscar(id);
                     if (venta != null)
-                        articulo= venta.Articulos;
+                        articulo = venta.Articulos;
                 }
                 catch (Exception)
                 {
@@ -174,8 +174,7 @@ namespace BLL
             }
             return articulo;
         }
-
-        public static bool  Modificar(int id, Articulos art)
+        public static bool Modificar(int id, Articulos art)
         {
             bool retorno = false;
             try
@@ -185,15 +184,12 @@ namespace BLL
                     Articulos a = db.Articulos.Find(id);
                     a.Nombre = art.Nombre;
                     a.Marca = art.Marca;
-                    a.NombreProveedor = art.NombreProveedor;
-                    a.PrecioCompra= art.PrecioCompra;
                     a.Precio = art.Precio;
-                    a.CantidadDispodible = art.CantidadDispodible;
-                    a.Categoria = art.Categoria;
+                    a.Cantidad = art.Cantidad;
 
                     db.SaveChanges();
                 }
-                   retorno = true;
+                retorno = true;
             }
             catch (Exception)
             {
@@ -202,7 +198,7 @@ namespace BLL
             return retorno;
         }
 
-        
+
 
 
 
@@ -212,7 +208,7 @@ namespace BLL
 
             var db = new SistemaVentasDb();
 
-            lista = db.Articulos.Where(p => p.Nombre== aux).ToList();
+            lista = db.Articulos.Where(p => p.Nombre == aux).ToList();
 
             return lista;
 
@@ -223,7 +219,7 @@ namespace BLL
 
             var db = new SistemaVentasDb();
 
-            lista = db.Articulos.Where(p => p.Marca== aux).ToList();
+            lista = db.Articulos.Where(p => p.Marca == aux).ToList();
 
             return lista;
 
@@ -235,7 +231,7 @@ namespace BLL
             {
                 try
                 {
-                    Articulos a = db.Articulos.Where(aO => aO.ArticuloId== id).FirstOrDefault();
+                    Articulos a = db.Articulos.Where(aO => aO.ArticuloId == id).FirstOrDefault();
                     precio = a.Precio;
                 }
                 catch (Exception e)
@@ -248,32 +244,9 @@ namespace BLL
 
         }
 
-      
 
-        
-      
-       public static List<Articulos> GetListaFecha(DateTime aux)
-        {
-            List<Articulos> lista = new List<Articulos>();
 
-            var db = new SistemaVentasDb();
 
-            lista = db.Articulos.Where(p => p.Fecha== aux).ToList();
 
-            return lista;
-
-        }
-       public static List<Articulos> GetListaFecha(DateTime Desde, DateTime Hasta)
-        {
-            List<Articulos> lista = new List<Articulos>();
-
-            var db = new SistemaVentasDb();
-
-            lista = db.Articulos.Where(p => p.Fecha >= Desde && p.Fecha <= Hasta).ToList();
-
-            return lista;
-
-        }
-        
     }
 }

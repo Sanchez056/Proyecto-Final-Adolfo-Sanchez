@@ -26,11 +26,13 @@ namespace SistemaDeVentas.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\BaseDatos\\Sis" +
-            "temaVentasDb.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string ConStr {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Proyecto Final\\SistemaDeV" +
+            "entas-Proyecto-Final-Adolfo Sanchez\\SistemaDeVentas-Proyecto-Final-Adolfo Sanche" +
+            "z\\SistemaDeVentas\\BaseDatos\\SistemaVentasDb.mdf\";Integrated Security=True;Connec" +
+            "t Timeout=30")]
+        public string ConStrs {
             get {
-                return ((string)(this["ConStr"]));
+                return ((string)(this["ConStrs"]));
             }
         }
     }

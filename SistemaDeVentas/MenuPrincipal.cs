@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using ProyectoFinal_Aplicada1.Registros;
 using SistemaDeVentas;
 using System;
 using System.Collections.Generic;
@@ -137,27 +138,14 @@ namespace SistemaDeVentas
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                UI.Registros.RegistrosDeVentas resv = new UI.Registros.RegistrosDeVentas();
-
-                resv.MdiParent = this;
-                resv.Show();
-                resv.Location = new Point(40, 40);
-
-            }
-            catch (Exception es)
-            {
-                MessageBox.Show(es.ToString());
-                throw;
-            }
+           
              
 
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            UI.Registros.RegistrosDeVentas resv = new UI.Registros.RegistrosDeVentas();
+          RegistrosVentass resv = new RegistrosVentass();
 
             resv.MdiParent = this;
             resv.Show();
